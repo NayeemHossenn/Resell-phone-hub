@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductList = ({ product }) => {
+const ProductList = ({ product, setItems }) => {
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure className="px-5 pt-10">
@@ -16,7 +16,13 @@ const ProductList = ({ product }) => {
         <p>Posted time:{product.postedTime}</p>
 
         <div className="card-actions">
-          <button className="btn btn-primary">Buy Now</button>
+          <label
+            htmlFor="book-modal"
+            className="btn text-white"
+            onClick={() => setItems(product)}
+          >
+            Book now
+          </label>
         </div>
       </div>
     </div>
