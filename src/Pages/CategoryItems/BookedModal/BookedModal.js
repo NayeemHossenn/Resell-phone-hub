@@ -1,7 +1,20 @@
 import React from "react";
 
 const BookedModal = ({ items }) => {
-  const { title } = items;
+  const { title, Original_price } = items;
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const price = form.price.value;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const location = form.location.value;
+
+    console.log(price, name, email, phone, location);
+  };
+
   return (
     <div>
       <input type="checkbox" id="book-modal" className="modal-toggle" />
@@ -14,10 +27,46 @@ const BookedModal = ({ items }) => {
             ✕
           </label>
           <h3 className="text-lg font-bold">{title}</h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 mt-5">
+            <input
+              type="text"
+              name="price"
+              value={Original_price}
+              disabled
+              className="input w-full"
+            />
+
+            <input
+              type="text"
+              name="name"
+              placeholder="User Name"
+              className="input w-full"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="email"
+              className="input w-full"
+            />
+            <input
+              type="text"
+              name="phone"
+              placeholder="Phone"
+              className="input w-full"
+            />
+            <input
+              type="text"
+              name="location"
+              placeholder="Location"
+              className="input w-full"
+            />
+            <br />
+            <input
+              className="btn btn-accent text-white"
+              type="submit"
+              value="submit"
+            />
+          </form>
         </div>
       </div>
     </div>
