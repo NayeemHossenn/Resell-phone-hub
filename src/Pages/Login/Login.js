@@ -1,14 +1,27 @@
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
+  const { SignIn } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
   const handleLogin = (data) => {
-    console.log(data);
+    setError("");
+    SignIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setError(error.message);
+      });
   };
   return (
     <div className="flex justify-center items-center h-[600px]">
@@ -45,6 +58,7 @@ const Login = () => {
             value="Login"
             type="submit"
           />
+          <div>{error && <p className="text-red-500">{error}</p>}</div>
         </form>
         <p>
           Create an account?
