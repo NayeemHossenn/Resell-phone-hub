@@ -5,7 +5,7 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <Link to="home">Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
         <Link to="/category">Item 1</Link>
@@ -15,7 +15,7 @@ const Navbar = () => {
       </li>
 
       <li>
-        <Link to="/">Item 3</Link>
+        <Link to="/login">Login</Link>
       </li>
     </>
   );

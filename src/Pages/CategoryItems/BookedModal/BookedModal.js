@@ -1,6 +1,6 @@
 import React from "react";
 
-const BookedModal = ({ items }) => {
+const BookedModal = ({ items, setItems }) => {
   const { title, Original_price } = items;
 
   const handleSubmit = (event) => {
@@ -12,7 +12,16 @@ const BookedModal = ({ items }) => {
     const phone = form.phone.value;
     const location = form.location.value;
 
-    console.log(price, name, email, phone, location);
+    const booked = {
+      PhoneModel: title,
+      price,
+      name,
+      email,
+      phone,
+      location,
+    };
+    console.log(booked);
+    setItems(null);
   };
 
   return (
