@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Categories = () => {
   const [products, setProducts] = useState([]);
@@ -24,7 +25,10 @@ const Categories = () => {
                   <h2 className="card-title ">{product.title}</h2>
 
                   <div className="card-actions justify-end">
-                    <button className="btn btn-primary">See All</button>
+                    <Link to={`/category/${product._id}`}>
+                      {" "}
+                      <button className="btn btn-primary">See All</button>
+                    </Link>
                   </div>
                 </div>
               </div>

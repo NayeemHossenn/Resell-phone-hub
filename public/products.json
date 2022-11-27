@@ -1,0 +1,73 @@
+[
+    {
+        "category_id":"6382134d4a803ea9a5ddd791",
+        "title":"iphone 14",
+        "img":"https://i.ibb.co/ZgTkY0J/iphone.png",
+        "Resale_price":" $1000",
+        "Original_price":"$1500.00",
+        "location":"Dhaka",
+        "use":"1y",
+        "sellersName":"Nayeem",
+        "postedTime":"6 jan"
+        
+    },
+    {
+        "category_id":"6382134d4a803ea9a5ddd791",
+        "title":"iphone 11",
+        "img":"https://i.ibb.co/PY8hsD6/iphone-11.jpg",
+        "Resale_price":" $1000",
+        "Original_price":"$1500.00",
+        "location":"Dhaka",
+        "use":"1y",
+        "sellersName":"Nayeem",
+        "postedTime":"6 jan"
+        
+    },
+    {
+        "category_id":"6382134d4a803ea9a5ddd792",
+        "title":"One Plus 7",
+        "img":"https://i.ibb.co/tHMqBSN/op.jpg",
+        "Resale_price":" $1000",
+        "Original_price":"$1500.00",
+        "location":"Dhaka",
+        "use":"1y",
+        "sellersName":"Nayeem",
+        "postedTime":"6 jan"
+        
+    },
+    {
+        "category_id":"6382134d4a803ea9a5ddd792",
+        "title":"One Plus 10",
+        "img":"https://i.ibb.co/MGKGJy0/op10.jpg",
+        "Resale_price":" $1000",
+        "Original_price":"$1500.00",
+        "location":"Dhaka",
+        "use":"1y",
+        "sellersName":"Nayeem",
+        "postedTime":"6 jan"
+    },
+    {
+        "category_id":"6382134d4a803ea9a5ddd793",
+        "title":"Samsung Fold",
+        "img":"https://i.ibb.co/ySf1NTf/fold.jpg",
+        "Resale_price":" $1000",
+        "Original_price":"$1500.00",
+        "location":"Dhaka",
+        "use":"1y",
+        "sellersName":"Nayeem",
+        "postedTime":"6 jan"
+        
+    },
+    {
+        "category_id":"6382134d4a803ea9a5ddd793",
+        "title":"Samsung S22",
+        "img":"https://i.ibb.co/KWpJk93/s22.jpg",
+        "Resale_price":" $1000",
+        "Original_price":"$1500.00",
+        "location":"Dhaka",
+        "use":"1y",
+        "sellersName":"Nayeem",
+        "postedTime":"6 jan"
+        
+    }
+]
