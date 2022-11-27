@@ -1,15 +1,22 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
-  const { SignIn } = useContext(AuthContext);
+  const { SignIn, providerLogin } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
   const handleLogin = (data) => {
     setError("");
@@ -17,12 +24,24 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
         setError(error.message);
       });
   };
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div className="flex justify-center items-center h-[600px]">
       <div>
@@ -67,7 +86,9 @@ const Login = () => {
           </Link>
         </p>
         <br />
-        <button className="btn btn-outline">Continue With Google</button>
+        <button onClick={handleGoogleSignIn} className="btn btn-outline">
+          Continue With Google
+        </button>
       </div>
     </div>
   );

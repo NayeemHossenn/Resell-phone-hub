@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
 import CategoryItems from "../../Pages/CategoryItems/CategoryItems";
+import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -24,10 +26,18 @@ export const router = createBrowserRouter([
       },
       {
         path: "/category/:id",
-        element: <CategoryItems></CategoryItems>,
+        element: (
+          <PrivateRoute>
+            <CategoryItems></CategoryItems>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/category/${params.id}`),
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashBoard></DashBoard>,
   },
 ]);
