@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const updateUserProfile = (profile) => {
-    return updateProfile(user, profile);
+    return updateProfile(auth.currentUser, profile);
   };
 
   const logOut = () => {
