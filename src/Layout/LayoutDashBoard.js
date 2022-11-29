@@ -33,6 +33,8 @@ const LayoutDashBoard = () => {
                 {" "}
                 <li>
                   <Link to="/dashboard/userlist">User list</Link>
+                  <Link to="/dashboard/addProducts">Add A Product</Link>
+                  <Link to="/dashboard/manageProducts">Manage Products</Link>
                 </li>
               </>
             )}
