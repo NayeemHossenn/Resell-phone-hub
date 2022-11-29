@@ -1,15 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { Link } from "react-router-dom";
+import Loading from "../../Loading/Loading";
 
 const Categories = () => {
   // const [products, setProducts] = useState([]);
 
-  const { data: products = [] } = useQuery({
+  const { data: products = [], isLoading } = useQuery({
     queryKey: ["categories"],
     queryFn: () =>
       fetch("http://localhost:5000/categories").then((res) => res.json()),
   });
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   // useEffect(() => {
   //   fetch("http://localhost:5000/categories")

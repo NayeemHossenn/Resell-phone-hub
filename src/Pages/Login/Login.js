@@ -3,15 +3,20 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useJwtToken from "../../hooks/useJwtToken";
 
 const Login = () => {
   const { SignIn, providerLogin } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const [error, setError] = useState("");
-
+  const [userEmail, setUserEmail] = useState("");
+  const [token] = useJwtToken(userEmail);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  // if (token) {
+  //   navigate(from, { replace: true });
+  // }
   const {
     register,
     formState: { errors },
@@ -24,6 +29,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setUserEmail(data.email);
         reset();
         navigate(from, { replace: true });
       })

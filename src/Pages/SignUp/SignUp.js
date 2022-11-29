@@ -1,12 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useJwtToken from "../../hooks/useJwtToken";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
+  const [userEmail, setUserEmail] = useState("");
+  const [token] = useJwtToken(userEmail);
   const navigate = useNavigate();
+  if (token) {
+    navigate("/");
+  }
 
   const {
     register,
@@ -27,12 +33,37 @@ const SignUp = () => {
         };
         updateUserProfile(profile)
           .then(() => {
-            navigate("/");
+            saveUser(data.name, data.email);
           })
           .catch((error) => console.log(error));
       })
       .catch((err) => console.log(err));
   };
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUserEmail(email);
+      });
+  };
+  // const getToken = (email) => {
+  //   fetch(`http://localhost:5000/jwt?email=${email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.accessToken) {
+  //         localStorage.setItem("accessToken", data.accessToken);
+  //         navigate("/");
+  //       }
+  //     });
+  // };
 
   return (
     <div className="flex justify-center items-center h-[800px]">
