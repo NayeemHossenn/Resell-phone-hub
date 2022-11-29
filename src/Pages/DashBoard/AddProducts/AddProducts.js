@@ -5,12 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../Loading/Loading";
 
 const AddProducts = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const handleaddProduct = (data) => {
     const products = {

@@ -60,7 +60,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="text-center">
+      <div className="text-center mb-5">
         <p>Copyright © 2022 - All right reserved by ResalePhone</p>
       </div>
     </footer>

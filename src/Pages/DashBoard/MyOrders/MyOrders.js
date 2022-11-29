@@ -14,23 +14,12 @@ const MyOrders = () => {
       return data;
     },
   });
-  // const { data: booked = [] } = useQuery({
-  //   queryKey: ["bookings", user?.email],
-  //   queryFn: async () => {
-  //     const res = await fetch(url, {
-  //       headers: {
-  //         authorization: `bearer ${localStorage.getItem("accessToken")}`,
-  //       },
-  //     });
-  //     const data = await res.json();
-  //     return data;
-  //   },
-  // });
+
   return (
     <div>
-      <h2 className="text-xl mb-5">My Bookings</h2>
-      <div className="overflow-x-auto">
-        <table className="table w-full">
+      <h2 className="text-xl text-blue-500 mb-5">My Orders</h2>
+      <div className="overflow-x-auto ">
+        <table className="table w-full  ">
           <thead>
             <tr>
               <th>name</th>
