@@ -14,31 +14,44 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        {" "}
+        <Link to="/" className="font-bold text-xl">
+          Home
+        </Link>
       </li>
 
       {user?.uid ? (
         <>
           {" "}
           <li>
-            <Link to="/dashboard">DashBoard</Link>
+            <Link to="/dashboard" className="font-bold text-xl">
+              DashBoard
+            </Link>
           </li>
           <li>
-            <button onClick={handleSignOut}>SignOut</button>
+            <button onClick={handleSignOut} className="text-xl font-bold">
+              SignOut
+            </button>
           </li>
         </>
       ) : (
         <li>
-          <Link to="/login">Login</Link>
+          {" "}
+          <Link to="/login" className="font-bold text-xl">
+            Login
+          </Link>
         </li>
       )}
       <li>
-        <Link to="/blogs">Blogs</Link>
+        {" "}
+        <Link to="/blogs" className="font-bold text-xl">
+          Blogs
+        </Link>
       </li>
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-gray-200 p-3">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -64,7 +77,7 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <Link to="/" className="btn btn-ghost normal-case text-2xl">
           Resale Phone Hub
         </Link>
       </div>

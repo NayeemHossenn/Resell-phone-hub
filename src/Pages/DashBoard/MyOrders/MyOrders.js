@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
   const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
-  const { data: booked = [] } = useQuery({
+  const { data: booked = [], refetch } = useQuery({
     queryKey: ["bookings", user?.email],
     queryFn: async () => {
       const res = await fetch(url);
@@ -14,6 +15,21 @@ const MyOrders = () => {
       return data;
     },
   });
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/bookings/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          console.log(data);
+          toast.success("deleted syccessfully");
+          refetch();
+        }
+      });
+    console.log(id);
+  };
 
   return (
     <div>
@@ -25,7 +41,7 @@ const MyOrders = () => {
               <th>name</th>
               <th>title</th>
               <th>price</th>
-              <th>pay</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -34,7 +50,9 @@ const MyOrders = () => {
                 <th>{i + 1}</th>
                 <td>{booking.PhoneModel}</td>
                 <td>{booking.price}</td>
-                <td>Blue</td>
+                <td>
+                  <button onClick={() => handleDelete(booking._id)}>X</button>
+                </td>
               </tr>
             ))}
           </tbody>
