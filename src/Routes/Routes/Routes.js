@@ -12,11 +12,14 @@ import UserList from "../../Pages/DashBoard/UserList/UserList";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import AddProducts from "../../Pages/DashBoard/AddProducts/AddProducts";
 import ManageProducts from "../../Pages/DashBoard/ManageProducts/ManageProducts";
+import ErrorElement from "../../Pages/Shared/ErrorElement/ErrorElement";
+import Blogs from "../../Pages/Bologs/Blogs";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorElement></ErrorElement>,
     children: [
       {
         path: "/",
@@ -40,6 +43,10 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/category/${params.id}`),
       },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+      },
     ],
   },
   {
@@ -49,6 +56,7 @@ export const router = createBrowserRouter([
         <LayoutDashBoard></LayoutDashBoard>
       </PrivateRoute>
     ),
+    errorElement: <ErrorElement></ErrorElement>,
     children: [
       {
         path: "/dashboard",

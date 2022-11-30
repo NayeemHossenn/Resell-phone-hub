@@ -66,56 +66,124 @@ const SignUp = () => {
   // };
 
   return (
-    <div className="flex justify-center items-center h-[800px]">
-      <div>
-        <h2 className="text-3xl ">SignUp</h2>
-        <form onSubmit={handleSubmit(handleSignIn)}>
-          <div className="form-control w-full max-w-xs">
-            <label className="label"></label>
-            <input
-              type="name"
-              {...register("name", { required: "name is required" })}
-              placeholder="Enter Your Name"
-              className="input input-bordered w-full max-w-xs"
-            />
-            {errors.email && (
-              <p className="text-red-500">{errors.email?.message}</p>
-            )}
-            <label className="label"></label>
-            <input
-              type="email"
-              {...register("email", { required: "Email is required" })}
-              placeholder="Enter Your Email"
-              className="input input-bordered w-full max-w-xs"
-            />
-            {errors.password && (
-              <p className="text-red-500">{errors.password?.message}</p>
-            )}
-          </div>
-          <div className="form-control w-full max-w-xs">
-            <label className="label"></label>
-            <input
-              type="password"
-              {...register("password", { required: "password is required" })}
-              placeholder="Enter Password"
-              className="input input-bordered w-full max-w-xs"
-            />
-          </div>
-          <br />
-          <input
-            className="btn btn-neutral w-full"
-            value="SignUp"
-            type="submit"
+    // <div className="flex justify-center items-center h-[800px]">
+    //   <div>
+    //     <h2 className="text-3xl ">SignUp</h2>
+    //     <form onSubmit={handleSubmit(handleSignIn)}>
+    //       <div className="form-control ">
+    //         <label className="label"></label>
+    //         <input
+    //           type="name"
+    //           {...register("name", { required: "name is required" })}
+    //           placeholder="Enter Your Name"
+    //           className="input input-bordered "
+    //         />
+    //         {errors.email && (
+    //           <p className="text-red-500">{errors.email?.message}</p>
+    //         )}
+    //         <label className="label"></label>
+    //         <input
+    //           type="email"
+    //           {...register("email", { required: "Email is required" })}
+    //           placeholder="Enter Your Email"
+    //           className="input input-bordered "
+    //         />
+    //         {errors.password && (
+    //           <p className="text-red-500">{errors.password?.message}</p>
+    //         )}
+    //       </div>
+    //       <div className="form-control ">
+    //         <label className="label"></label>
+    //         <input
+    //           type="password"
+    //           {...register("password", { required: "password is required" })}
+    //           placeholder="Enter Password"
+    //           className="input input-bordered "
+    //         />
+    //       </div>
+    //       <br />
+    //       <input
+    //         className="btn btn-neutral w-full"
+    //         value="SignUp"
+    //         type="submit"
+    //       />
+    //     </form>
+    //     <p>
+    //       Already have an account?
+    //       <Link className="text-secondary" to="/login">
+    //         Login Here
+    //       </Link>
+    //     </p>
+    //     <br />
+    //     <button className="btn btn-outline w-full">Continue With Google</button>
+    //   </div>
+    // </div>
+
+    <div className="hero  w-full">
+      <div className="hero-content grid md:grid-cols-2 flex-col lg:flex-row">
+        <div className="text-center lg:text-left">
+          <img
+            className="w-3/4"
+            src="https://t4.ftcdn.net/jpg/04/28/75/97/360_F_428759715_jsOPITlaytE3QXc2yI1D4U6uwZdVGkRp.jpg"
+            alt=""
           />
-        </form>
-        <p>
-          Already have an account?
-          <Link className="text-secondary" to="/login">
-            Login Here
-          </Link>
-        </p>
-        <br />
-        <button className="btn btn-outline w-full">Continue With Google</button>
+        </div>
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 p-10">
+          <div>
+            <h2 className="text-3xl ">SignUp</h2>
+            <form onSubmit={handleSubmit(handleSignIn)}>
+              <div className="form-control ">
+                <label className="label"></label>
+                <input
+                  type="name"
+                  {...register("name", { required: "name is required" })}
+                  placeholder="Enter Your Name"
+                  className="input input-bordered "
+                />
+                {errors.email && (
+                  <p className="text-red-500">{errors.email?.message}</p>
+                )}
+                <label className="label"></label>
+                <input
+                  type="email"
+                  {...register("email", { required: "Email is required" })}
+                  placeholder="Enter Your Email"
+                  className="input input-bordered "
+                />
+                {errors.password && (
+                  <p className="text-red-500">{errors.password?.message}</p>
+                )}
+              </div>
+              <div className="form-control ">
+                <label className="label"></label>
+                <input
+                  type="password"
+                  {...register("password", {
+                    required: "password is required",
+                  })}
+                  placeholder="Enter Password"
+                  className="input input-bordered "
+                />
+              </div>
+              <br />
+              <input
+                className="btn btn-neutral w-full"
+                value="SignUp"
+                type="submit"
+              />
+            </form>
+            <p>
+              Already have an account?
+              <Link className="text-secondary" to="/login">
+                Login Here
+              </Link>
+            </p>
+            <br />
+            <button className="btn btn-outline w-full">
+              Continue With Google
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
