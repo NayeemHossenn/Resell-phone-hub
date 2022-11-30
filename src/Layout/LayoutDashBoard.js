@@ -17,9 +17,9 @@ const LayoutDashBoard = () => {
           <Outlet></Outlet>
           <label
             htmlFor="myDrawer"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="btn btn-success drawer-button lg:hidden"
           >
-            Open drawer
+            See More
           </label>
         </div>
         <div className="drawer-side">

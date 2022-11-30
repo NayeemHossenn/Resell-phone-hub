@@ -6,7 +6,7 @@ import img3 from "../../../assets/banner/iphone-12.jpeg";
 const Banner = () => {
   return (
     <div>
-      <div className="carousel w-full">
+      <div className="carousel w-full mt-5">
         <div id="item1" className="carousel-item relative w-full">
           <img src={img1} alt="" className="w-full" />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-7 right-5 top-1/2">

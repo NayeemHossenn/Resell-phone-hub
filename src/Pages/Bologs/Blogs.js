@@ -6,7 +6,7 @@ const Blogs = () => {
       <div>
         <h3 className="text-4xl mb-4 ">
           {" "}
-          1.What are the different ways to manage a state in a React
+          1. What are the different ways to manage a state in a React
           application?{" "}
         </h3>
         <p className="text-xl">
@@ -38,7 +38,7 @@ const Blogs = () => {
       <div className="mt-3">
         <h3 className="text-4xl mb-3">
           {" "}
-          How does prototypical inheritance work?{" "}
+          2. How does prototypical inheritance work?{" "}
         </h3>
         <p className="text-xl">
           prototypical inheritance refers to the ability to access object
@@ -53,7 +53,7 @@ const Blogs = () => {
       <div className="mt-3">
         <h3 className="text-4xl mb-3">
           {" "}
-          What is a unit test? Why should we write unit tests?{" "}
+          3. What is a unit test? Why should we write unit tests?{" "}
         </h3>
         <p className="text-xl">
           Unit testing is a software testing method where “units”—the individual
@@ -64,7 +64,7 @@ const Blogs = () => {
         </p>
       </div>
       <div className="mt-3">
-        <h3 className="text-4xl mb-3"> React vs. Angular vs. Vue? </h3>
+        <h3 className="text-4xl mb-3">4. React vs. Angular vs. Vue? </h3>
         <p className="text-xl">
           <p className="text-xl font-bold">React-</p>A JavaScript library for
           building user interfaces.React Elements are the smallest building
