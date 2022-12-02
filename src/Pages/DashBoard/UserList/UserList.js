@@ -6,16 +6,21 @@ const UserList = () => {
   const { data: allUser = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch(
+        "https://resale-phone-server-nayeemhossenn.vercel.app/users"
+      );
       const data = await res.json();
       return data;
     },
   });
 
   const handleAdmin = (_id) => {
-    fetch(`http://localhost:5000/users/admin/${_id}`, {
-      method: "PUT",
-    })
+    fetch(
+      `https://resale-phone-server-nayeemhossenn.vercel.app/users/admin/${_id}`,
+      {
+        method: "PUT",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -26,9 +31,12 @@ const UserList = () => {
       });
   };
   const handleSeller = (_id) => {
-    fetch(`http://localhost:5000/users/seller/${_id}`, {
-      method: "PUT",
-    })
+    fetch(
+      `https://resale-phone-server-nayeemhossenn.vercel.app/users/seller/${_id}`,
+      {
+        method: "PUT",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

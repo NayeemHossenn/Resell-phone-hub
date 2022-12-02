@@ -6,16 +6,21 @@ const UserList = () => {
   const { data: allUser = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users?role=buyer");
+      const res = await fetch(
+        "https://resale-phone-server-nayeemhossenn.vercel.app/users?role=buyer"
+      );
       const data = await res.json();
       return data;
     },
   });
 
   const handleAdmin = (_id) => {
-    fetch(`http://localhost:5000/users/admin/${_id}`, {
-      method: "PUT",
-    })
+    fetch(
+      `https://resale-phone-server-nayeemhossenn.vercel.app/users/admin/${_id}`,
+      {
+        method: "PUT",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -27,9 +32,12 @@ const UserList = () => {
   };
 
   const handleSeller = (_id) => {
-    fetch(`http://localhost:5000/users/seller/${_id}`, {
-      method: "PUT",
-    })
+    fetch(
+      `https://resale-phone-server-nayeemhossenn.vercel.app/users/seller/${_id}`,
+      {
+        method: "PUT",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -41,7 +49,7 @@ const UserList = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`https://resale-phone-server-nayeemhossenn.vercel.app/users/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -57,7 +65,7 @@ const UserList = () => {
 
   return (
     <div className="bg-gray-200 p-4 rounded mt-5">
-      <h2 className="text-3xl mb-5">All users</h2>
+      <h2 className="text-3xl mb-5">All Buyers</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>

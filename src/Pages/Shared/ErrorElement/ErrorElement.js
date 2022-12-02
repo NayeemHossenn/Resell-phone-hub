@@ -5,20 +5,6 @@ import img from "../../../assets/404not.jpg";
 const ErrorElement = () => {
   const error = useRouteError();
   return (
-    // <div className="">
-    //   <h2 className=" text-center text-warning text-4xl font-bold">
-    //     Error Occured!!!!!
-    //   </h2>
-    //   {error && (
-    //     <div>
-    //       <h4 className=" text-center text-red-400 test-2xl font-bold">
-    //         {error.statusText || error.message}
-    //       </h4>
-    //       <h4 className=" text-center text-red-600 text-2xl">{error.status}</h4>
-    //     </div>
-    //   )}
-    // </div>
-
     <div class="flex items-center justify-center w-screen h-screen">
       <div class="px-4 lg:py-12">
         <div class="lg:gap-4 lg:flex">

@@ -9,10 +9,12 @@ const AddProducts = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  const { data: categoriesItems = [], isLoading } = useQuery({
+  const { data: categoriesItems = [] } = useQuery({
     queryKey: ["categoriesItems"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/categoriesList");
+      const res = await fetch(
+        "https://resale-phone-server-nayeemhossenn.vercel.app/categoriesList"
+      );
       const data = await res.json();
       return data;
     },
@@ -30,7 +32,7 @@ const AddProducts = () => {
       condition: data.category,
     };
 
-    fetch("http://localhost:5000/products", {
+    fetch("https://resale-phone-server-nayeemhossenn.vercel.app/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -77,12 +79,6 @@ const AddProducts = () => {
             placeholder="location"
             className="input input-bordered w-full max-w-xs"
           />
-          {/* <input
-            type="text"
-            {...register("categories", { required: true })}
-            placeholder="select category"
-            className="input input-bordered w-full max-w-xs"
-          /> */}
 
           <select
             className="bg-gray-100 p-2"
@@ -94,10 +90,6 @@ const AddProducts = () => {
                 {category.title}
               </option>
             ))}
-
-            {/* <option value="Excelent"> ExcellentCondition</option>
-            <option value="Excelent">Good Condition</option>
-            <option value="Fair ">Fair Condition</option> */}
           </select>
 
           <input

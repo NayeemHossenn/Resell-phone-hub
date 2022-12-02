@@ -5,7 +5,7 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  const url = `https://resale-phone-server-nayeemhossenn.vercel.app/bookings?email=${user?.email}`;
 
   const { data: booked = [], refetch } = useQuery({
     queryKey: ["bookings", user?.email],
@@ -17,9 +17,12 @@ const MyOrders = () => {
   });
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/bookings/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://resale-phone-server-nayeemhossenn.vercel.app/bookings/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {

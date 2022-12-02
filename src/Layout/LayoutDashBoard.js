@@ -38,11 +38,8 @@ const LayoutDashBoard = () => {
             <>
               {isAdmin && (
                 <li>
-                  {/* <Link to="/dashboard/userlist">User list</Link> */}
                   <Link to="/dashboard/sellerlist">All Sellers</Link>
                   <Link to="/dashboard/buyerlist">All Buyers</Link>
-                  {/* <Link to="/dashboard/addProducts">Add A Product</Link>
-                  <Link to="/dashboard/manageProducts">My Products</Link> */}
                 </li>
               )}
             </>
