@@ -4,8 +4,8 @@
 
 - https://resale-phone-5358f.web.app
 
-AdminUser:final1@gmail.com
-password:123456
+* adminEmail: <final1@gmail.com>
+* adminPassword: <123456>
 
 ### ` features and functionality`
 
