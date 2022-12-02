@@ -6,7 +6,7 @@ const UserList = () => {
   const { data: allUser = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch("http://localhost:5000/users?role=buyer");
       const data = await res.json();
       return data;
     },
@@ -25,6 +25,7 @@ const UserList = () => {
         }
       });
   };
+
   const handleSeller = (_id) => {
     fetch(`http://localhost:5000/users/seller/${_id}`, {
       method: "PUT",
@@ -38,8 +39,24 @@ const UserList = () => {
         }
       });
   };
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/users/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          console.log(data);
+          toast.success("deleted syccessfully");
+          refetch();
+        }
+      });
+    console.log(id);
+  };
+
   return (
-    <div className="bg-gray-200 p-4 rounded">
+    <div className="bg-gray-200 p-4 rounded mt-5">
       <h2 className="text-3xl mb-5">All users</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
@@ -48,8 +65,8 @@ const UserList = () => {
               <th></th>
               <th>Name</th>
               <th>Email</th>
-              <th>Admin</th>
-              <th>verify seller</th>
+              <th>Verify Admin</th>
+              <th>Verify </th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -59,28 +76,35 @@ const UserList = () => {
                 <th>{i + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
+
                 <td>
                   {user.role !== "admin" && (
                     <button
                       onClick={() => handleAdmin(user._id)}
                       className="text-primary"
                     >
-                      Make Admin
+                      Admin
                     </button>
                   )}
                 </td>
+
                 <td>
                   {user.role !== "seller" && (
                     <button
                       onClick={() => handleSeller(user._id)}
                       className="text-primary"
                     >
-                      Make seller
+                      verify sellers
                     </button>
                   )}
                 </td>
                 <td>
-                  <button className="text-red-500">Delete</button>
+                  <button
+                    onClick={() => handleDelete(user._id)}
+                    className="text-red-500"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

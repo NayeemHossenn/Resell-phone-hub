@@ -2,8 +2,8 @@ import React from "react";
 
 const Blogs = () => {
   return (
-    <div className="bg-sky-300 p-5 rounded">
-      <div>
+    <div className=" p-5 rounded">
+      <div className="bg-sky-100 p-4  rounded">
         <h3 className="text-4xl mb-4 ">
           {" "}
           1. What are the different ways to manage a state in a React
@@ -35,7 +35,7 @@ const Blogs = () => {
           application rely upon accessing URL state
         </p>
       </div>
-      <div className="mt-3">
+      <div className="mt-3 bg-sky-100 p-4  rounded">
         <h3 className="text-4xl mb-3">
           {" "}
           2. How does prototypical inheritance work?{" "}
@@ -50,7 +50,7 @@ const Blogs = () => {
           pointer function
         </p>
       </div>
-      <div className="mt-3">
+      <div className="mt-3 bg-sky-100 p-4  rounded">
         <h3 className="text-4xl mb-3">
           {" "}
           3. What is a unit test? Why should we write unit tests?{" "}
@@ -63,7 +63,7 @@ const Blogs = () => {
           future.
         </p>
       </div>
-      <div className="mt-3">
+      <div className="mt-3 bg-sky-100 p-4  rounded">
         <h3 className="text-4xl mb-3">4. React vs. Angular vs. Vue? </h3>
         <p className="text-xl">
           <p className="text-xl font-bold">React-</p>A JavaScript library for

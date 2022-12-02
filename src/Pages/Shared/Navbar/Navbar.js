@@ -15,7 +15,7 @@ const Navbar = () => {
     <>
       <li>
         {" "}
-        <Link to="/" className="font-bold text-xl">
+        <Link to="/" className="font-bold ">
           Home
         </Link>
       </li>
@@ -24,12 +24,12 @@ const Navbar = () => {
         <>
           {" "}
           <li>
-            <Link to="/dashboard" className="font-bold text-xl">
+            <Link to="/dashboard" className="font-bold ">
               DashBoard
             </Link>
           </li>
           <li>
-            <button onClick={handleSignOut} className="text-xl font-bold">
+            <button onClick={handleSignOut} className=" font-bold">
               SignOut
             </button>
           </li>
@@ -37,14 +37,14 @@ const Navbar = () => {
       ) : (
         <li>
           {" "}
-          <Link to="/login" className="font-bold text-xl">
+          <Link to="/login" className="font-bold ">
             Login
           </Link>
         </li>
       )}
       <li>
         {" "}
-        <Link to="/blogs" className="font-bold text-xl">
+        <Link to="/blogs" className="font-bold ">
           Blogs
         </Link>
       </li>

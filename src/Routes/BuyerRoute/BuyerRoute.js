@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
-import UseAdmin from "../../hooks/UseAdmin";
+import useBuyer from "../../hooks/UseBuyer";
 
-const AdminRoute = ({ children }) => {
+const BuyerRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
-  const [isAdmin, adminLoading] = UseAdmin(user?.email);
-  if (loading || adminLoading) {
+  const [isBuyer, buyLoading] = useBuyer(user?.email);
+  if (loading || buyLoading) {
     return (
       <div class="flex justify-center items-center">
         <div
@@ -19,10 +19,10 @@ const AdminRoute = ({ children }) => {
       </div>
     );
   }
-  if (user && isAdmin) {
+  if (user && isBuyer) {
     return children;
   }
   return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };
 
-export default AdminRoute;
+export default BuyerRoute;

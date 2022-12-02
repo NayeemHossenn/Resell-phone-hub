@@ -51,7 +51,12 @@ const MyOrders = () => {
                 <td>{booking.PhoneModel}</td>
                 <td>{booking.price}</td>
                 <td>
-                  <button onClick={() => handleDelete(booking._id)}>X</button>
+                  <button
+                    onClick={() => handleDelete(booking._id)}
+                    className="text-xl text-red-500"
+                  >
+                    X
+                  </button>
                 </td>
               </tr>
             ))}

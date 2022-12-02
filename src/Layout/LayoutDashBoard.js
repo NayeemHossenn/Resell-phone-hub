@@ -2,12 +2,16 @@ import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import UseAdmin from "../hooks/UseAdmin";
+import useBuyer from "../hooks/UseBuyer";
+import UseSeller from "../hooks/UseSeller";
 import Footer from "../Pages/Shared/Footer/Footer";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 
 const LayoutDashBoard = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = UseAdmin(user?.email);
+  const [isSeller] = UseSeller(user?.email);
+  const [isBuyer] = useBuyer(user?.email);
   return (
     <div>
       <Navbar></Navbar>
@@ -25,16 +29,30 @@ const LayoutDashBoard = () => {
         <div className="drawer-side">
           <label htmlFor="myDrawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-            <li>
-              <Link to="/dashboard">My Orders</Link>
-            </li>
-            {isAdmin && (
+            {isBuyer && (
+              <li>
+                <Link to="/dashboard">My Orders</Link>
+              </li>
+            )}
+
+            <>
+              {isAdmin && (
+                <li>
+                  {/* <Link to="/dashboard/userlist">User list</Link> */}
+                  <Link to="/dashboard/sellerlist">All Sellers</Link>
+                  <Link to="/dashboard/buyerlist">All Buyers</Link>
+                  {/* <Link to="/dashboard/addProducts">Add A Product</Link>
+                  <Link to="/dashboard/manageProducts">My Products</Link> */}
+                </li>
+              )}
+            </>
+
+            {isSeller && (
               <>
                 {" "}
                 <li>
-                  <Link to="/dashboard/userlist">User list</Link>
                   <Link to="/dashboard/addProducts">Add A Product</Link>
-                  <Link to="/dashboard/manageProducts">Manage Products</Link>
+                  <Link to="/dashboard/manageProducts">My Products</Link>
                 </li>
               </>
             )}

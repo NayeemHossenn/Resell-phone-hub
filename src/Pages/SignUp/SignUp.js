@@ -38,7 +38,7 @@ const SignUp = () => {
         };
         updateUserProfile(profile)
           .then(() => {
-            saveUser(data.name, data.email);
+            saveUser(data.name, data.email, data.role);
           })
           .catch((error) => console.log(error));
       })
@@ -55,8 +55,8 @@ const SignUp = () => {
       .catch((error) => console.error(error));
   };
 
-  const saveUser = (name, email) => {
-    const user = { name, email };
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -66,7 +66,9 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setUserEmail(email);
+        navigate(from, { replace: true });
       });
   };
 
@@ -86,16 +88,24 @@ const SignUp = () => {
             <form onSubmit={handleSubmit(handleSignIn)}>
               <div className="form-control ">
                 <label className="label"></label>
+
+                <select {...register("role")}>
+                  <option value="">Select role</option>
+                  <option value="seller">Sellers</option>
+                  <option value="buyer">buyers</option>
+                </select>
+
                 <input
                   type="name"
                   {...register("name", { required: "name is required" })}
                   placeholder="Enter Your Name"
-                  className="input input-bordered "
+                  className="input input-bordered mt-2 "
                 />
                 {errors.email && (
                   <p className="text-red-500">{errors.email?.message}</p>
                 )}
                 <label className="label"></label>
+
                 <input
                   type="email"
                   {...register("email", { required: "Email is required" })}

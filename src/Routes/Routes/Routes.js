@@ -8,12 +8,14 @@ import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import MyOrders from "../../Pages/DashBoard/MyOrders/MyOrders";
-import UserList from "../../Pages/DashBoard/UserList/UserList";
+import AllSeller from "../../Pages/DashBoard/AllSeller/AllSeller";
+import AllBuyers from "../../Pages/DashBoard/AllBuyers/AllBuyers";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import AddProducts from "../../Pages/DashBoard/AddProducts/AddProducts";
 import ManageProducts from "../../Pages/DashBoard/ManageProducts/ManageProducts";
 import ErrorElement from "../../Pages/Shared/ErrorElement/ErrorElement";
 import Blogs from "../../Pages/Bologs/Blogs";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 export const router = createBrowserRouter([
   {
@@ -62,31 +64,41 @@ export const router = createBrowserRouter([
         path: "/dashboard",
         element: <MyOrders></MyOrders>,
       },
+
       {
-        path: "/dashboard/userlist",
+        path: "/dashboard/sellerlist",
         element: (
           <AdminRoute>
-            {" "}
-            <UserList></UserList>
+            <AllSeller></AllSeller>{" "}
           </AdminRoute>
         ),
       },
+      {
+        path: "/dashboard/buyerlist",
+        element: (
+          <AdminRoute>
+            <AllBuyers></AllBuyers>
+          </AdminRoute>
+        ),
+      },
+
       {
         path: "/dashboard/addProducts",
         element: (
-          <AdminRoute>
+          <SellerRoute>
             {" "}
             <AddProducts></AddProducts>
-          </AdminRoute>
+          </SellerRoute>
         ),
       },
+
       {
         path: "/dashboard/manageProducts",
         element: (
-          <AdminRoute>
+          <SellerRoute>
             {" "}
             <ManageProducts></ManageProducts>
-          </AdminRoute>
+          </SellerRoute>
         ),
       },
     ],

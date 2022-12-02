@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -7,6 +8,16 @@ import Loading from "../../Loading/Loading";
 const AddProducts = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+
+  const { data: categoriesItems = [], isLoading } = useQuery({
+    queryKey: ["categoriesItems"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/categoriesList");
+      const data = await res.json();
+      return data;
+    },
+  });
+
   const handleaddProduct = (data) => {
     const products = {
       name: data.product,
@@ -66,12 +77,29 @@ const AddProducts = () => {
             placeholder="location"
             className="input input-bordered w-full max-w-xs"
           />
-          <input
+          {/* <input
             type="text"
             {...register("categories", { required: true })}
             placeholder="select category"
             className="input input-bordered w-full max-w-xs"
-          />
+          /> */}
+
+          <select
+            className="bg-gray-100 p-2"
+            {...register("categories", { required: true })}
+          >
+            {categoriesItems.map((category) => (
+              <option value={category.title} key={category._id}>
+                {" "}
+                {category.title}
+              </option>
+            ))}
+
+            {/* <option value="Excelent"> ExcellentCondition</option>
+            <option value="Excelent">Good Condition</option>
+            <option value="Fair ">Fair Condition</option> */}
+          </select>
+
           <input
             type="text"
             {...register("description", { required: true })}
